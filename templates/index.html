@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garbage / Road Classifier</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .box { padding: 20px; border: 2px dashed #ccc; width: 400px; margin: auto; }
+        img { max-width: 300px; margin-top: 20px; border-radius: 10px; }
+        .result { font-size: 22px; margin-top: 20px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Garbage / Road Classifier</h1>
+    <div class="box">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Enter your name" required><br><br>
+            <input type="text" name="address" placeholder="Enter your address" required><br><br>
+            <input type="text" name="phone" placeholder="Enter your phone number" required><br><br>
+            <input type="file" name="file" required><br><br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    {% if prediction %}
+        <div class="result">
+            <p><b>User Details:</b></p>
+            <p>Name: {{ name }}</p>
+            <p>Address: {{ address }}</p>
+            <p>Phone: {{ phone }}</p>
+            <hr>
+            <p>Prediction: <b>{{ prediction }}</b></p>
+            <img src="{{ img_path }}" alt="Uploaded Image">
+        </div>
+    {% endif %}
+</body>
+</html>

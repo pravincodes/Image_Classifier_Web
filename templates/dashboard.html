@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        th { background: #f4f4f4; }
+        img { width: 100px; border-radius: 5px; }
+        .search-box { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <form method="POST" class="search-box">
+        <input type="text" name="address_filter" placeholder="Search by address">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Image</th>
+            <th>Prediction</th>
+            <th>Confidence</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td><img src="{{ url_for('static', filename='uploads/' + row[4]) }}"></td>
+            <td>{{ row[5] }}</td>
+            <td>{{ "%.2f"|format(row[6]) }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
