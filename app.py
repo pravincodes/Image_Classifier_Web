@@ -9,8 +9,8 @@ import json, os, sqlite3
 app = Flask(__name__)
 
 # Load model & labels
-model = tf.keras.models.load_model("C:/Users/PRAVIN/Final Project/New folder/model.h5")
-with open("C:/Users/PRAVIN/Final Project/New folder/labels.json", "r") as f:
+model = tf.keras.models.load_model("model.h5")
+with open("labels.json", "r") as f:
     labels = json.load(f)
 
 # Ensure uploads folder exists
